@@ -19,8 +19,9 @@
     "docker:up:api": "docker-compose up --build -d api",
     "docker:up:store": "docker-compose up -d store",
     "docker:down": "docker-compose down --rmi all",
-    "orm:config": "ts-node ./src/application/orm/generate-config.ts",
-    "orm:cli": "ts-node --project ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "ts:cli": "./node_modules/ts-node/dist/bin.js",
+    "orm:config": "yarn ts:cli ./src/application/orm/generate-config.ts",
+    "orm:cli": "yarn ts:cli --project ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "orm:clean": "rm -rf src/application/orm/migration/*.ts",
     "orm:gen": "yarn orm:cli migration:generate",
     "orm:run": "yarn orm:cli migration:run"
