@@ -1,4 +1,4 @@
-name: Build API Stack
+name: Build API Store Stack
 
 on:
   - push
