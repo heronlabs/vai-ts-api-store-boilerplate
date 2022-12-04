@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS "apiStoreDB";
+
+CREATE DATABASE "apiStoreDB" OWNER root;

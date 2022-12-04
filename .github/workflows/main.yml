@@ -1,0 +1,23 @@
+name: Build API Stack
+
+on:
+  - push
+  - workflow_dispatch
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
+          repository: heronlabs/build-api-action
+          ref: 1.1.0
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          path: ./build-api-action
+
+      - name: Run action
+        uses: './build-api-action/application/github'

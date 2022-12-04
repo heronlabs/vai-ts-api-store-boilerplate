@@ -1,0 +1,11 @@
+# Bin
+node_modules/
+bin/
+
+# Tests
+coverage/
+tests/
+
+# Etc
+*.yml
+*.md
