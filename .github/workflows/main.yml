@@ -11,25 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: '[UP] | Up Store'
-        run: yarn docker:up:store
-        shell: bash
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
+          repository: heronlabs/build-database-action
+          ref: 1.1.0
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          path: ./build-database-action
 
-      - name: '[CONFIG] | Generate Config'
-        run: yarn orm:config
-        shell: bash
-
-      - name: '[MIGRATION] | Clean Migration'
-        run: yarn orm:clean
-        shell: bash
-
-      - name: '[MIGRATION] | Generate Migration'
-        run: yarn orm:gen -n Inital
-        shell: bash
-
-      - name: '[MIGRATION] | Run Migration'
-        run: yarn orm:run
-        shell: bash
+      - name: Run action
+        uses: './build-database-action/application/github'
 
       - name: Checkout action repository
         uses: actions/checkout@v3
