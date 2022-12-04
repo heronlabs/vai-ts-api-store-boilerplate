@@ -19,6 +19,9 @@ jobs:
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
           path: ./build-database-action
 
+      - name: Run action
+        uses: './build-database-action/application/github'
+
       - name: Checkout action repository
         uses: actions/checkout@v3
         with:
