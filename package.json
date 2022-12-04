@@ -16,14 +16,14 @@
     "test:e2e": "yarn test --config=tests/e2e/jest.config.ts",
     "api:start": "node bin/application/api/entry-point.js",
     "docker:build": "docker build -t my-project:latest . -f Dockerfile.local",
-    "docker:up:my-project": "docker-compose up -d my-project",
-    "docker:up:my-project-store": "docker-compose up -d my-project-store",
+    "docker:up:api": "docker-compose up --build -d api",
+    "docker:up:store": "docker-compose up -d store",
+    "docker:down": "docker-compose down --rmi all",
     "orm:config": "ts-node ./src/application/orm/generate-config.ts",
     "orm:cli": "ts-node --project ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "orm:clean": "rm -rf src/application/orm/migration/*.ts",
     "orm:gen": "yarn orm:cli migration:generate",
-    "orm:run": "yarn orm:cli migration:run",
-    "docker:down": "docker-compose down --rmi all"
+    "orm:run": "yarn orm:cli migration:run"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",

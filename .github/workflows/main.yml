@@ -14,6 +14,14 @@ jobs:
       - name: Checkout action repository
         uses: actions/checkout@v3
         with:
+          repository: heronlabs/build-database-action
+          ref: 1.0.0
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          path: ./build-database-action
+
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
           repository: heronlabs/build-api-action
           ref: 1.1.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}

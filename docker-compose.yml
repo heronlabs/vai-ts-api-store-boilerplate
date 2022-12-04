@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  my-project-store:
-    container_name: my-project-store
+  store:
+    container_name: store
     image: postgres:14
     restart: always
     environment:
@@ -13,10 +13,10 @@ services:
     ports:
       - '5422:5432'
 
-  my-project:
+  api:
     depends_on:
-      - my-project-store
-    container_name: my-project
+      - store
+    container_name: api
     build:
       context: .
       dockerfile: ./Dockerfile.local
@@ -24,7 +24,7 @@ services:
       - '3000:3000'
     environment:
       CORS_ORIGIN: "*"
-      DATABASE_HOST: "my-project-store"
+      DATABASE_HOST: "store"
       DATABASE_PORT: 5432
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"

@@ -115,3 +115,4 @@ bin/
 
 # ORM
 ormconfig.json
+src/application/orm/migration/*.ts
