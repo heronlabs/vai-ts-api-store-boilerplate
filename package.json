@@ -86,7 +86,8 @@
     "ignorePatterns": [
       "node_modules/",
       "coverage*/",
-      "bin/"
+      "bin/",
+      "src/application/orm/"
     ]
   }
 }
