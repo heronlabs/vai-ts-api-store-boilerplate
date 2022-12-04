@@ -11,6 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: '[CONFIG] | TS Node'
+        run: npm i -g ts-node
+        shell: bash
+
       - name: Checkout action repository
         uses: actions/checkout@v3
         with:
