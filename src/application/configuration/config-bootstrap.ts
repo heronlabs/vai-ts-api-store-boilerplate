@@ -1,4 +1,4 @@
-import {EnvBootstrap} from '@heronlabs/env';
+import {EnvBootstrap} from '@heronlabs/presenter-env';
 import {Module} from '@nestjs/common';
 
 import {Configuration} from './configuration';

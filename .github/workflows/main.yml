@@ -31,4 +31,15 @@ jobs:
           path: ./build-api-action
 
       - name: Run action
-        uses: './build-api-action/application/github'
+        uses: './build-node-install-action/application/github'
+
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
+          repository: heronlabs/build-node-install-action
+          ref: 1.0.0
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          path: ./build-node-install-action
+
+      - name: Run action
+        uses: './build-node-install-action/application/github'

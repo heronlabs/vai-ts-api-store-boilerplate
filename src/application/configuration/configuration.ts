@@ -2,7 +2,7 @@ import {
   Environment,
   NumberEnvPresenter,
   TextEnvPresenter,
-} from '@heronlabs/env';
+} from '@heronlabs/presenter-env';
 import {Inject} from '@nestjs/common';
 
 import {EnvironmentConfiguration} from './interfaces/environment-configuration';
