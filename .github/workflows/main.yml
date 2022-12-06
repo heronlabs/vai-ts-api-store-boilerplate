@@ -14,17 +14,6 @@ jobs:
       - name: Checkout action repository
         uses: actions/checkout@v3
         with:
-          repository: heronlabs/build-database-action
-          ref: 1.3.0
-          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
-          path: ./build-database-action
-
-      - name: Run action
-        uses: './build-database-action/application/github'
-
-      - name: Checkout action repository
-        uses: actions/checkout@v3
-        with:
           repository: heronlabs/build-node-install-action
           ref: 1.0.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
@@ -32,6 +21,17 @@ jobs:
 
       - name: Run action
         uses: './build-node-install-action/application/github'
+
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
+          repository: heronlabs/build-database-action
+          ref: 1.3.0
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          path: ./build-database-action
+
+      - name: Run action
+        uses: './build-database-action/application/github'
 
       - name: Checkout action repository
         uses: actions/checkout@v3
