@@ -1,8 +1,8 @@
 import {ConnectionOptions} from 'typeorm';
 
-export const connectionOptions = (): ConnectionOptions => {
+export const connectionOptions = (name?: string): ConnectionOptions => {
   const ormFile: ConnectionOptions = {
-    name: 'orm',
+    name,
     type: 'postgres',
     host: process.env['DATABASE_HOST'],
     port: Number(process.env['DATABASE_PORT']),
