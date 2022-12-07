@@ -34,8 +34,6 @@ jobs:
 
       - name: Run action
         uses: './build-database-action/application/github'
-        with:
-          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
 
       - name: Checkout action repository
         uses: actions/checkout@v3
