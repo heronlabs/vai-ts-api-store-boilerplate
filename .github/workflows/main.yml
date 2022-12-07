@@ -14,8 +14,21 @@ jobs:
       - name: Checkout action repository
         uses: actions/checkout@v3
         with:
+          repository: heronlabs/build-node-install-action
+          ref: 1.2.0
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
+          path: ./build-node-install-action
+
+      - name: Run action
+        uses: './build-node-install-action/application/github'
+        with:
+          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
+
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
           repository: heronlabs/build-database-action
-          ref: 1.6.5
+          ref: 1.7.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
           path: ./build-database-action
 
