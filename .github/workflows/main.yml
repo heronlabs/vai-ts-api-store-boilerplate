@@ -45,5 +45,3 @@ jobs:
 
       - name: Run action
         uses: './build-api-action/application/github'
-        with:
-          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
