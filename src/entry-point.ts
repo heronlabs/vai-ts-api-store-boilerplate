@@ -14,7 +14,7 @@ const bootstrap = async () => {
 
   return serverlessExpress({
     app: app.getHttpAdapter().getInstance(),
-  }).handler;
+  });
 };
 
 export const handler: Handler = async (
