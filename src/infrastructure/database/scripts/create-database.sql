@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS "apiStoreDB";
+DROP DATABASE IF EXISTS "storeSandboxDB";
 
-CREATE DATABASE "apiStoreDB" OWNER root;
+CREATE DATABASE "storeSandboxDB" OWNER root;

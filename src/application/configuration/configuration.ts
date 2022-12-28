@@ -17,7 +17,7 @@ export class Configuration implements EnvironmentConfiguration {
     port: this.numberEnvPresenter.getValueByKey('DATABASE_PORT'),
     username: this.textEnvPresenter.getValueByKey('DATABASE_USERNAME'),
     password: this.textEnvPresenter.getValueByKey('DATABASE_PASSWORD'),
-    database: this.textEnvPresenter.getValueByKey('DATABASE_DATABASE'),
+    database: this.textEnvPresenter.getValueByKey('DATABASE_NAME'),
   };
 
   constructor(

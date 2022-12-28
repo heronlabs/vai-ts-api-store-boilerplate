@@ -4,6 +4,7 @@ import {APP_PIPE} from '@nestjs/core';
 import {CoreBootstrap} from '../../core/core-bootstrap';
 import {ConfigBootstrap} from '../configuration/config-bootstrap';
 import {HealthCheckController} from './controllers/health-check/health-check-controller';
+import {HelloWorldController} from './controllers/hello-world/hello-world-controller';
 import {JsonPresenter} from './presenters/json/json-presenter';
 
 export const apiModule: ModuleMetadata = {
@@ -15,7 +16,7 @@ export const apiModule: ModuleMetadata = {
     JsonPresenter,
   ],
   imports: [ConfigBootstrap, CoreBootstrap],
-  controllers: [HealthCheckController],
+  controllers: [HealthCheckController, HelloWorldController],
 };
 
 @Module(apiModule)

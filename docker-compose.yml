@@ -28,9 +28,21 @@ services:
       DATABASE_PORT: 5432
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"
-      DATABASE_DATABASE: "apiStoreDB"
+      DATABASE_NAME: "storeSandboxDB"
+
+  orm:
+    depends_on:
+      - store
+    container_name: orm
+    build:
+      context: .
+      dockerfile: ./Dockerfile.orm
+    environment:
+      DATABASE_HOST: "store"
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: "root"
+      DATABASE_PASSWORD: "root"
+      DATABASE_NAME: "storeSandboxDB"
 
 volumes:
   postgres:
-
-

@@ -115,7 +115,6 @@ bin/
 
 # ORM
 ormconfig.json
-src/application/orm/migration/*.ts
 
 # Registry Credentials
 .npmrc

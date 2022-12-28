@@ -1,15 +1,27 @@
 import {createConnection, getConnection} from 'typeorm';
 
-import {connectionOptions} from '../../src/application/orm/connection-options';
-
 beforeAll(async () => {
-  await createConnection(connectionOptions('orm'));
+  await createConnection({
+    name: 'test:integration',
+    type: 'postgres',
+    host: process.env['DATABASE_HOST'],
+    port: Number(process.env['DATABASE_PORT']),
+    username: process.env['DATABASE_USERNAME'],
+    password: process.env['DATABASE_PASSWORD'],
+    database: process.env['DATABASE_NAME'],
+    logging: false,
+    entities: ['./src/core/**/*-entity.ts'],
+    migrations: ['./src/application/orm/migration/*.ts'],
+    cli: {
+      migrationsDir: 'src/application/orm/migration',
+    },
+  });
 });
 
 beforeEach(async () => {
-  await getConnection('orm').synchronize(true);
+  await getConnection('test:integration').synchronize(true);
 });
 
 afterAll(async () => {
-  await getConnection('orm').close();
+  await getConnection('test:integration').close();
 });
