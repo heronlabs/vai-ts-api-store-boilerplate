@@ -6,7 +6,6 @@ import * as fs from 'fs';
 
 const connectionOptions = JSON.stringify(
   {
-    name: 'local',
     type: 'postgres',
     host: process.env['DATABASE_HOST'],
     port: Number(process.env['DATABASE_PORT']),
