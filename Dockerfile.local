@@ -1,5 +1,4 @@
-# hadolint ignore=DL3007
-FROM heronlabs/node-alpine:latest
+FROM heronlabs/node-alpine:1
 
 WORKDIR /app
 
