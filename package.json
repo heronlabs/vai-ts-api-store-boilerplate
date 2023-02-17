@@ -21,9 +21,9 @@
     "docker:build:local": "docker build -t my-project-local:latest . -f Dockerfile.local",
     "docker:build:api": "docker build -t my-project-api:latest . -f Dockerfile.api",
     "docker:build:orm": "docker build -t my-project-orm:latest . -f Dockerfile.orm",
-    "docker:up:store": "docker-compose up -d store",
-    "docker:up:api": "docker-compose up -d api",
-    "docker:up:orm": "docker-compose up -d orm",
+    "docker:up:store": "docker-compose up -d ms-store",
+    "docker:up:orm": "docker-compose up -d ms-orm",
+    "docker:up:api": "docker-compose up -d ms-store-api",
     "docker:down": "docker-compose down --rmi all"
   },
   "devDependencies": {

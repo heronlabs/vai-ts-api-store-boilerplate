@@ -1,7 +1,7 @@
 version: '3.8'
 services:
-  store:
-    container_name: store
+  ms-store:
+    container_name: ms-store
     image: postgres:14
     restart: always
     environment:
@@ -12,11 +12,11 @@ services:
       - ./src/infrastructure/database/scripts/create-database.sql:/docker-entrypoint-initdb.d/create-database.sql
     ports:
       - '5422:5432'
+    networks:
+      - ms-store-network
 
-  api:
-    depends_on:
-      - store
-    container_name: api
+  ms-store-api:
+    container_name: ms-store-api
     build:
       context: .
       dockerfile: ./Dockerfile.local
@@ -24,25 +24,39 @@ services:
       - '3000:3000'
     environment:
       CORS_ORIGIN: "*"
-      DATABASE_HOST: "store"
+      DATABASE_HOST: "ms-store"
       DATABASE_PORT: 5432
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"
       DATABASE_NAME: "storeSandboxDB"
-
-  orm:
     depends_on:
-      - store
-    container_name: orm
+      - ms-store
+    networks:
+      - ms-store-network
+
+  ms-orm:
+    container_name: ms-orm
     build:
       context: .
       dockerfile: ./Dockerfile.orm
     environment:
-      DATABASE_HOST: "store"
+      DATABASE_HOST: "ms-store"
       DATABASE_PORT: 5432
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"
       DATABASE_NAME: "storeSandboxDB"
+    ports:
+      - '9000:8080'
+    networks:
+      - ms-store-network
+    depends_on:
+      - ms-store
 
 volumes:
   postgres:
+
+
+networks:
+  ms-store-network:
+    name: MS-STORE
+    driver: bridge
