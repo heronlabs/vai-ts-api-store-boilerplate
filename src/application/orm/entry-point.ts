@@ -13,7 +13,8 @@ export const handler: Handler = async (): Promise<void> => {
     password: process.env['DATABASE_PASSWORD'],
     database: process.env['DATABASE_NAME'],
     logging: true,
-    migrations: ['./migration/*.js'],
+    entities: ['./bin/core/**/*-entity.js'],
+    migrations: ['./bin/application/orm/migration/*.js'],
   });
 
   await connection.synchronize(true);
