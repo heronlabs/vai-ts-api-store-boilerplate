@@ -7,7 +7,6 @@ on:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    container: heronlabs/node-alpine:2
 
     steps:
       - uses: actions/checkout@v3
