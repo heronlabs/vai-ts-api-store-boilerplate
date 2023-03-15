@@ -11,7 +11,7 @@ services:
       - postgres:/var/lib/postgresql/data
       - ./src/infrastructure/database/scripts/create-database.sql:/docker-entrypoint-initdb.d/create-database.sql
     ports:
-      - '5422:5432'
+      - '5432:5432'
     networks:
       - ms-store-network
 
