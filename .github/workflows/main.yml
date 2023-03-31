@@ -1,8 +1,8 @@
 name: Build API Store Stack
 
 on:
-  - push
   - workflow_dispatch
+  - push
 
 jobs:
   pipeline:
@@ -11,28 +11,28 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Checkout action repository
+      - name: '[ACTION] | Clone build database action'
         uses: actions/checkout@v3
         with:
           repository: heronlabs/build-database-action
-          ref: 1.10.0
+          ref: 2.0.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
           path: ./build-database-action
 
-      - name: Run action
+      - name: '[ACTION] | Run build database action'
         uses: './build-database-action/application/github'
         with:
           AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
 
-      - name: Checkout action repository
+      - name: '[ACTION] | Clone build api action'
         uses: actions/checkout@v3
         with:
           repository: heronlabs/build-api-action
-          ref: 1.4.0
+          ref: 2.0.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
           path: ./build-api-action
 
-      - name: Run action
+      - name: '[ACTION] | Run build api action'
         uses: './build-api-action/application/github'
         with:
           AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}

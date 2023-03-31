@@ -20,8 +20,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.local
-    ports:
-      - '3000:3000'
     environment:
       CORS_ORIGIN: "*"
       DATABASE_HOST: "ms-store"
@@ -29,6 +27,8 @@ services:
       DATABASE_USERNAME: "root"
       DATABASE_PASSWORD: "root"
       DATABASE_NAME: "storeSandboxDB"
+    ports:
+      - '3000:3000'
     depends_on:
       - ms-store
     networks:
