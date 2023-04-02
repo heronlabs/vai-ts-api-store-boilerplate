@@ -1,4 +1,4 @@
-name: Build API Store Stack
+name: Build
 
 on:
   - workflow_dispatch
@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: heronlabs/build-database-action
-          ref: 2.0.0
+          ref: 3.0.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
           path: ./build-database-action
 
@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: heronlabs/build-api-action
-          ref: 2.0.0
+          ref: 3.0.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
           path: ./build-api-action
 
