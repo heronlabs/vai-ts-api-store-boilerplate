@@ -38,7 +38,7 @@ services:
     container_name: ms-orm
     build:
       context: .
-      dockerfile: ./Dockerfile.orm
+      dockerfile: ./Dockerfile.local-orm
     environment:
       DATABASE_HOST: "ms-store"
       DATABASE_PORT: 5432
