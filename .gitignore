@@ -33,6 +33,3 @@ bin/
 
 # ORM
 ormconfig.json
-
-# Registry Credentials
-.npmrc
