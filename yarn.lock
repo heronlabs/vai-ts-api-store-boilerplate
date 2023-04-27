@@ -343,10 +343,10 @@
   resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.6.0.tgz#9ea331766084288634a9247fcd8b84f16ff4ba07"
   integrity sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==
 
-"@heronlabs/presenter-env@^1.6.0":
-  version "1.6.0"
-  resolved "https://npm.pkg.github.com/download/@heronlabs/presenter-env/1.6.0/f805dbb875c86541ec2104233bc5fbdfe296c622#f805dbb875c86541ec2104233bc5fbdfe296c622"
-  integrity sha512-oFMpoVKVazDsnnx3y+6a6L9yohrWalgGlx/rcH0ZqhYx7pLKeJGu8FZUfnryzPQjnJTB9Fgy4BmmZACL3vFoCQ==
+"@heronlabs/presenter-env@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@heronlabs/presenter-env/-/presenter-env-1.0.0.tgz#bce7551bcf31af96a3ffc00d7cd54d5b1e393bb7"
+  integrity sha512-zR8GsV9EcSc9kq6W7xZqpOZWg0y3ljXDTWZx+nHX4e6b6vWnICC2oIMpzNN+FE6McPiIopqNT8CeprnzX5suxg==
   dependencies:
     "@nestjs/common" "^9.0.0"
     "@nestjs/core" "^9.4.0"
