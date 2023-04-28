@@ -1,18 +1,24 @@
 import 'reflect-metadata';
 
+import {EnvironmentFactory} from '@heronlabs/presenter-env';
 import {Handler} from 'aws-lambda';
 import {createConnection} from 'typeorm';
 
 export const orm = async () => {
+  const env = await EnvironmentFactory.make();
+
+  const envText = env.makeText();
+  const envNumber = env.makeNumber();
+
   try {
     const connection = await createConnection({
       name: 'orm',
       type: 'postgres',
-      host: process.env['DATABASE_HOST'],
-      port: Number(process.env['DATABASE_PORT']),
-      username: process.env['DATABASE_USERNAME'],
-      password: process.env['DATABASE_PASSWORD'],
-      database: process.env['DATABASE_NAME'],
+      host: await envText.getValueByKey('DATABASE_HOST'),
+      port: await envNumber.getValueByKey('DATABASE_PORT'),
+      username: await envText.getValueByKey('DATABASE_USERNAME'),
+      password: await envText.getValueByKey('DATABASE_PASSWORD'),
+      database: await envText.getValueByKey('DATABASE_NAME'),
       logging: true,
       entities: ['./bin/core/**/*-entity.js'],
       migrations: ['./bin/application/orm/migration/*.js'],

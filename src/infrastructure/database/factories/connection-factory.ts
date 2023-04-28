@@ -4,16 +4,18 @@ import {EnvironmentConfiguration} from '../../../application/configuration/inter
 import {HelloWorldEntity} from '../../../core/entities/hello-world-entity';
 
 export class ConnectionFactory {
-  public static make(
+  public static async make(
     environmentConfiguration: EnvironmentConfiguration
-  ): TypeOrmModuleOptions {
+  ): Promise<TypeOrmModuleOptions> {
+    const {database} = await environmentConfiguration.getConfig();
+
     return {
       type: 'postgres',
-      host: environmentConfiguration.database.host,
-      port: environmentConfiguration.database.port,
-      username: environmentConfiguration.database.username,
-      password: environmentConfiguration.database.password,
-      database: environmentConfiguration.database.database,
+      host: database.host,
+      port: database.port,
+      username: database.username,
+      password: database.password,
+      database: database.database,
       entities: [HelloWorldEntity],
     };
   }

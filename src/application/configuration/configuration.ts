@@ -5,20 +5,30 @@ import {
 } from '@heronlabs/presenter-env';
 import {Inject} from '@nestjs/common';
 
-import {EnvironmentConfiguration} from './interfaces/environment-configuration';
+import {
+  Config,
+  EnvironmentConfiguration,
+} from './interfaces/environment-configuration';
 
 export class Configuration implements EnvironmentConfiguration {
-  public cors = {
-    origin: this.textEnvPresenter.getValueByKey('CORS_ORIGIN'),
-  };
-
-  public database = {
-    host: this.textEnvPresenter.getValueByKey('DATABASE_HOST'),
-    port: this.numberEnvPresenter.getValueByKey('DATABASE_PORT'),
-    username: this.textEnvPresenter.getValueByKey('DATABASE_USERNAME'),
-    password: this.textEnvPresenter.getValueByKey('DATABASE_PASSWORD'),
-    database: this.textEnvPresenter.getValueByKey('DATABASE_NAME'),
-  };
+  async getConfig(): Promise<Config> {
+    return {
+      cors: {
+        origin: await this.textEnvPresenter.getValueByKey('CORS_ORIGIN'),
+      },
+      database: {
+        host: await this.textEnvPresenter.getValueByKey('DATABASE_HOST'),
+        port: await this.numberEnvPresenter.getValueByKey('DATABASE_PORT'),
+        username: await this.textEnvPresenter.getValueByKey(
+          'DATABASE_USERNAME'
+        ),
+        password: await this.textEnvPresenter.getValueByKey(
+          'DATABASE_PASSWORD'
+        ),
+        database: await this.textEnvPresenter.getValueByKey('DATABASE_NAME'),
+      },
+    };
+  }
 
   constructor(
     @Inject(TextEnvPresenter)

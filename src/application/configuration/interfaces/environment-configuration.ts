@@ -1,4 +1,4 @@
-export interface EnvironmentConfiguration {
+export type Config = {
   cors: {
     origin: string;
   };
@@ -9,4 +9,8 @@ export interface EnvironmentConfiguration {
     password: string;
     database: string;
   };
+};
+
+export interface EnvironmentConfiguration {
+  getConfig(): Promise<Config>;
 }

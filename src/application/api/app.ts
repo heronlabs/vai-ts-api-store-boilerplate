@@ -9,7 +9,9 @@ export const App = async (): Promise<INestApplication> => {
 
   const configuration = app.get(Configuration);
 
-  const origin = configuration.cors.origin.split(',');
+  const {cors} = await configuration.getConfig();
+
+  const origin = cors.origin.split(',');
 
   app.enableCors({
     origin: origin[0] === '*' ? true : origin,
