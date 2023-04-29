@@ -34,5 +34,5 @@ bin/
 # ORM
 ormconfig.json
 
-# Registry Credentialsclear
+# Registry Credentials
 .npmrc
