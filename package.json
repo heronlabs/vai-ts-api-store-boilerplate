@@ -50,7 +50,7 @@
     "typescript": "4.8.4"
   },
   "dependencies": {
-    "@heronlabs/presenter-env": "^2.1.0",
+    "@heronlabs/presenter-env": "^3.0.0",
     "@nestjs/common": "^9.1.4",
     "@nestjs/core": "^9.4.0",
     "@nestjs/platform-express": "^9.1.4",
