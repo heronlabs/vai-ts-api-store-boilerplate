@@ -13,7 +13,7 @@
     "test": "jest --runInBand --colors",
     "test:unit": "yarn test --config=tests/unit/jest.config.ts",
     "test:integration": "yarn test --config=tests/integration/jest.config.ts",
-    "api:start": "node bin/application/api/entry-point.js",
+    "api:start": "node bin/application/api/entry-point-local.js",
     "orm:config": "ts-node ./tests/integration/__factories__/generate-config.ts",
     "orm:cli": "ts-node --project ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "orm:gen": "yarn orm:cli migration:generate",

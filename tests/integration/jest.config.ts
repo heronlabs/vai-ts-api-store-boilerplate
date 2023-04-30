@@ -7,7 +7,7 @@ const config: Config.InitialOptions = {
   testTimeout: 30000,
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
-    '!<rootDir>/**/entry-point.ts',
+    '!<rootDir>/**/entry-point*.ts',
     '!<rootDir>/**/app.ts',
     '!<rootDir>/src/application/orm/**',
   ],

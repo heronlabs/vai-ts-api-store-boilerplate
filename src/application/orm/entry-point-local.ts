@@ -1,3 +1,3 @@
-import {orm} from './entry-point';
+import {orm} from './orm';
 
 orm();
