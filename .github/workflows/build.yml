@@ -10,28 +10,30 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: '[ACTION] | Clone build database action'
-        uses: actions/checkout@v3
-        with:
-          repository: heronlabs/build-database-action
-          ref: 3.0.0
-          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
-          path: ./build-database-action
+      - name: '[BUILD] | Install Dependencies'
+        run: yarn install --frozen-lockfile
+        shell: bash
 
-      - name: '[ACTION] | Run build database action'
-        uses: './build-database-action/application/github'
-        with:
-          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
+      - name: '[BUILD] | Up Store'
+        run: yarn docker:up:store
+        shell: bash
 
-      - name: '[ACTION] | Clone build api action'
-        uses: actions/checkout@v3
-        with:
-          repository: heronlabs/build-api-action
-          ref: 3.0.0
-          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
-          path: ./build-api-action
+      - name: '[BUILD] | Syncronize Store'
+        run: yarn docker:up:orm
+        shell: bash
 
-      - name: '[ACTION] | Run build api action'
-        uses: './build-api-action/application/github'
-        with:
-          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
+      - name: '[BUILD] | Compile'
+        run: yarn compile
+        shell: bash
+
+      - name: '[TEST] | Lint Check'
+        run: yarn lint:check
+        shell: bash
+
+      - name: '[TEST] | Unit Tests'
+        run: yarn test:unit --coverage
+        shell: bash
+
+      - name: '[TEST] | Integration Tests'
+        run: yarn test:integration --coverage
+        shell: bash
